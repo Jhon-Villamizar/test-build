@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -7,31 +7,37 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Signin from './components/signin/Signin';
 import Signup from './components/signup/Signup';
+import Home from './components/home/Home';
 
 
 function App() {
   var login;
   const [show, setShow] = useState(true);
-  console.log(show);
+  const [principal, setPrincipal] = useState(true);
   
   const loginHandler = () => {
     setShow(!show);
   }
 
-  if (show==true) {
-    login = <Signin loginHandler={loginHandler}></Signin>
+  const goHome = () => {
+    setPrincipal(true);
+  }
+
+  if (principal == true) {
+    login = <Home></Home>
   } else {
-    login = <Signup loginHandler={loginHandler}></Signup>
+    if (show==true) {
+      login = <Signin loginHandler={loginHandler} goHome={goHome}></Signin>
+    } else {
+      login = <Signup loginHandler={loginHandler}></Signup>
+    }
   }
 
   return (
-    <Container className="justify-content-lg-center">
-      <Row>
-        {login}
-        {/* <Signin onClick={() => setShow(show? true : false)}></Signin>
-        <Signup></Signup> */}
-      </Row>
-    </Container>
+        <div>
+          {login}
+        </div>
+        
   );
 }
 

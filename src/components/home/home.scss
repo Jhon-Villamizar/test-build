@@ -1,0 +1,17 @@
+.navbar {
+    background-color: #000;
+    color: #fff;
+
+}
+.search {
+    margin-top: 20px;
+    &-input{
+        display: inline-block;
+        width: 70%;
+        margin-right: 10%;
+    }
+    &-button{
+        vertical-align: unset;
+        width: 20%;
+    }
+}
