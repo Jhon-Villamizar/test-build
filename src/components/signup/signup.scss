@@ -1,0 +1,27 @@
+.card-up {
+    position: relative;
+    left: 50%;
+    top: 80%;
+    transform: translate(-50%, -50%);
+    padding: 5%;
+    .logo {
+        margin: 0 auto 20px;
+        display: block;
+        img {
+            margin: 0 auto ;
+            display: block;
+        }
+    }
+    Button {
+        width: 100%;
+        margin: 0 auto;
+        display: block;
+    }
+    a {
+        cursor: pointer;
+        p {
+            margin-top: 15px;
+        }
+    }
+    
+}
