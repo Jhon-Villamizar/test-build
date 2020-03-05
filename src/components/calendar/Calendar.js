@@ -17,6 +17,7 @@ export default class Calendar extends React.Component {
             isEmpty: false,
             isLoading: true
         };
+        
     }
 
     componentDidMount = () => {

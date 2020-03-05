@@ -14,7 +14,7 @@ import Home from './components/home/Home';
 function App() {
   var login;
   const [show, setShow] = useState(true);
-  const [principal, setPrincipal] = useState(true);
+  const [principal, setPrincipal] = useState(false);
   
   const loginHandler = () => {
     setShow(!show);
@@ -24,8 +24,13 @@ function App() {
     setPrincipal(true);
   }
 
+  const returnLogin = () => {
+    setPrincipal(false);
+    setShow(true);
+  }
+
   if (principal == true) {
-    login = <Home></Home>
+    login = <Home returnLogin={returnLogin}></Home>
   } else {
     if (show==true) {
       login = <Signin loginHandler={loginHandler} goHome={goHome}></Signin>
