@@ -12,7 +12,6 @@ import "./signin.scss";
 export default function Signin(props) {
     const {loginHandler} = props;
     const {goHome} = props;
-    var emailVacio;
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 

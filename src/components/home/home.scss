@@ -1,17 +1,17 @@
-.navbar {
-    background-color: #000;
-    color: #fff;
-
-}
-.search {
-    margin-top: 20px;
-    &-input{
-        display: inline-block;
-        width: 70%;
-        margin-right: 10%;
-    }
-    &-button{
-        vertical-align: unset;
-        width: 20%;
+.cardImage {
+    position: relative;
+    left: 50%;
+    top: 100%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    width: 100%;
+    height: 300px;
+    box-shadow: 0 0 15px #c7c4c4;
+    padding: 20px;
+    .imgCal {
+        height: 100%;
+        width: 56%;
+        display: block;
+        margin: 0 auto;
     }
 }

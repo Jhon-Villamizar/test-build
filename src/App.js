@@ -7,6 +7,7 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Signin from './components/signin/Signin';
 import Signup from './components/signup/Signup';
+import Github from './components/github/Github';
 import Home from './components/home/Home';
 
 
