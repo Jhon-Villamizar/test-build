@@ -9,11 +9,13 @@ import Accordion from 'react-bootstrap/Accordion';
 import returnI from '../../assets/return.png';
 
 export default function Github(props) {
+
     const [userName, setuSerName] = useState('');
     const [avatar, setAvatar] = useState('');
     const [error, setError] = useState(null);
     const [listRepos, setListRepos] = useState([]);
     const { returnHome } = props;
+
     useEffect(() => {
         fetch(`https://api.github.com/search/users?q=${localStorage.email}`)
             .then(res => res.json())
@@ -31,13 +33,16 @@ export default function Github(props) {
                 }
             })
     }, []);
+
     const setData = ({ login, avatar_url }) => {
         setuSerName(login);
         setAvatar(avatar_url);
     };
+
     const setData2 = (y) => {
         setListRepos(y);
     };
+
     /*
     Funcion que agrega un input de busqueda
     */
@@ -59,9 +64,11 @@ export default function Github(props) {
     //             }
     //         })
     // }
+
     const items = listRepos.map((repo) =>
         <li key={repo.full_name}>{repo.name}</li>
     );
+    
     return (
         <div>
             <div className="navbar">Github Search

@@ -10,32 +10,19 @@ import "./signup.scss";
 
 
 export default function Signup(props) {
-    const {loginHandler} = props;
 
+    const {loginHandler} = props;
     const [name, setName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [validate, setValidate] = useState(0);
-    // var empty;
     
     const handleSubmit = (evt) => {
         evt.preventDefault();
-        // if (!name && !lastName && !email && !password) {
-        //     console.log('entro al primer if');
-        //     setValidate(1);
-        //     console.log(validate);
-        // }
-        
         localStorage.setItem('name',name);
         localStorage.setItem('lastName',lastName);
         localStorage.setItem('email',email);
         localStorage.setItem('password',password);
-        console.log('name: '+name+' lastName: '+lastName+' email: '+email+' password: '+password);
-        // if (name == '') {
-        //     console.log('vacio');
-        //     empty = <p>Campo Obligatorio</p>
-        // }
         loginHandler();
     }
 
@@ -82,10 +69,8 @@ export default function Signup(props) {
                                     <a onClick={loginHandler}><p>Already have account? Sign In</p></a>
                                 </Col>
                             </Row>
-                            
                         </Form>
                     </Card>
-                    
                 </Col>
             </Row>
         </Container>

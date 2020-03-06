@@ -10,6 +10,7 @@ import "./signin.scss";
 
 
 export default function Signin(props) {
+
     const {loginHandler} = props;
     const {goHome} = props;
     const [email, setEmail] = useState('');
@@ -18,14 +19,12 @@ export default function Signin(props) {
     const handleSubmit = (evt) => {
         evt.preventDefault();
         if (email == localStorage.getItem('email')&& password == localStorage.getItem('password')) {
-            console.log('iguales');
             goHome();
         }else{
-            console.log('desiguales');
             alert('Datos no registrados')
         }
-        console.log('email: '+email+' password: '+password)
     }
+    
     return(
         <Container className="justify-content-lg-center">
             <Row>

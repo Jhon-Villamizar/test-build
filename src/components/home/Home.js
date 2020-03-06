@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState} from 'react';
 import './home.scss';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -9,13 +9,21 @@ import gitI from '../../assets/github.png'
 import Github from '../github/Github';
 import Calendar from '../calendar/Calendar';
 import signout from '../../assets/signout.png';
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+  } from "react-router-dom";
 
 export default function Home(props) {
+
     var view;
     const [base, setBase] = useState(true);
     const [git, setGit] = useState(false);
     const [cal, setCal] = useState(false);
     const {returnLogin} = props;
+
     const viewHandlerGit = () => {
         setBase(false);
         setGit(true);
@@ -31,7 +39,9 @@ export default function Home(props) {
         setCal(false);
     }
 
-
+    const oauthHandler = () => {
+        window.location = "https://accounts.google.com/o/oauth2/auth?response_type=code&scope=https://www.googleapis.com/auth/calendar&redirect_uri=http://localhost:3000/&client_id=970950676460-h25d5i7ap0u4a77usnjkeg65n8bvhls1.apps.googleusercontent.com";
+    }
 
     if (base == true) {
         view = <Container>
@@ -43,7 +53,7 @@ export default function Home(props) {
                             </Card>
                         </Col>
                         <Col lg={6} md={6} sm={6} xs={6}>
-                            <Card className='cardImage' onClick={viewHandlerCal}>
+                            <Card className='cardImage' onClick={oauthHandler}>
                                 <Card.Img src={calendarI} alt="Card image" className="imgCal" />
                             </Card>
                         </Col>

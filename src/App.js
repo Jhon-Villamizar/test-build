@@ -10,11 +10,11 @@ import Signup from './components/signup/Signup';
 import Github from './components/github/Github';
 import Home from './components/home/Home';
 
-
 function App() {
+
   var login;
   const [show, setShow] = useState(true);
-  const [principal, setPrincipal] = useState(false);
+  const [principal, setPrincipal] = useState(true);
   
   const loginHandler = () => {
     setShow(!show);
@@ -43,7 +43,6 @@ function App() {
         <div>
           {login}
         </div>
-        
   );
 }
 
