@@ -17,59 +17,51 @@ import {
   } from "react-router-dom";
 
 export default function Home(props) {
-
     var view;
-    const [base, setBase] = useState(true);
-    const [git, setGit] = useState(false);
-    const [cal, setCal] = useState(false);
     const {returnLogin} = props;
-
-    const viewHandlerGit = () => {
-        setBase(false);
-        setGit(true);
-    }
-    const viewHandlerCal = () => {
-        setBase(false);
-        setCal(true);
-    }
-
-    const returnHome = () => {
-        setBase(true);
-        setGit(false);
-        setCal(false);
-    }
-
+    
     const oauthHandler = () => {
-        window.location = "https://accounts.google.com/o/oauth2/auth?response_type=code&scope=https://www.googleapis.com/auth/calendar&redirect_uri=http://localhost:3000/&client_id=970950676460-h25d5i7ap0u4a77usnjkeg65n8bvhls1.apps.googleusercontent.com";
+        window.location = "https://accounts.google.com/o/oauth2/auth?response_type=code&scope=https://www.googleapis.com/auth/calendar&redirect_uri=http://localhost:3000/calendar/&client_id=287236378304-d4t9icealf5mjuhq6g9in589jth6feui.apps.googleusercontent.com";
     }
 
-    if (base == true) {
-        view = <Container>
-                    <p onClick={returnLogin}><img src={signout} className="signout"/>Sign Out</p>
-                    <Row>
-                        <Col lg={6} md={6} sm={6} xs={6}>
-                            <Card className='cardImage' onClick={viewHandlerGit}>
-                                <Card.Img src={gitI} alt="Card image" className="imgGit" />
-                            </Card>
-                        </Col>
-                        <Col lg={6} md={6} sm={6} xs={6}>
+    view = <Container>
+                <Row>
+                    <Col lg={6} md={6} sm={6} xs={6}>
+                    <Link to="/github">
+                        <Card className='cardImage' >
+                            <Card.Img src={gitI} alt="Card image" className="imgGit" />
+                        </Card>
+                    </Link>
+                    </Col>
+                    <Col lg={6} md={6} sm={6} xs={6}>
+                    <Link to="/calendar">
                             <Card className='cardImage' onClick={oauthHandler}>
                                 <Card.Img src={calendarI} alt="Card image" className="imgCal" />
                             </Card>
-                        </Col>
-                    </Row>
-                </Container>
-    } else {
-        if (git == true) {
-            view = <Github returnHome={returnHome}></Github>
-        } else if(cal == true) {
-            view = <Calendar returnHome={returnHome}></Calendar>
-        }
-    }
+                    </Link>
+                    </Col>
+                </Row>
+            </Container>
 
     return (
-        <div>
-            {view}
-        </div>
-    )
+        <Router>
+            <div className="navbar">
+              <Link to="/">
+                <p>Home</p>
+              </Link>
+              <p onClick={returnLogin}><img src={signout} className="signout"/>Sign Out</p>
+            </div>
+            <Switch>
+              <Route exact path="/">
+                {view}
+              </Route>
+              <Route path="/github">
+                <Github ></Github>
+              </Route>
+              <Route path="/calendar">
+                <Calendar ></Calendar>
+              </Route>
+            </Switch>
+        </Router>
+      );
 }

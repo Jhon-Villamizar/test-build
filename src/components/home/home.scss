@@ -2,8 +2,7 @@
     position: relative;
     left: 50%;
     top: 100%;
-    transform: translate(-50%, -50%);
-    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, 50%);
     width: 100%;
     height: 300px;
     box-shadow: 0 0 15px #c7c4c4;
@@ -15,7 +14,23 @@
         margin: 0 auto;
     }
 }
+
 p.signout {
     text-align: end;
     cursor: pointer;
 }
+
+.navbar {
+    a {
+        cursor: pointer;
+        color: #fff;
+        font-size: 30px;
+        &:focus {
+            outline: none;
+        }
+        &:hover {
+            text-decoration: none;
+        }    
+    }
+}
+

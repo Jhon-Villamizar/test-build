@@ -1,27 +1,24 @@
 import React, { useState } from 'react';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import logo from './logo.svg';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Signin from './components/signin/Signin';
 import Signup from './components/signup/Signup';
-import Github from './components/github/Github';
 import Home from './components/home/Home';
 
 function App() {
 
   var login;
   const [show, setShow] = useState(true);
-  const [principal, setPrincipal] = useState(true);
+  const [principal, setPrincipal] = useState(false);
   
   const loginHandler = () => {
     setShow(!show);
   }
 
   const goHome = () => {
+    setShow(false);
     setPrincipal(true);
+    
   }
 
   const returnLogin = () => {
@@ -40,7 +37,7 @@ function App() {
   }
 
   return (
-        <div>
+        <div className="body">
           {login}
         </div>
   );

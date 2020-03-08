@@ -6,22 +6,20 @@ import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Accordion from 'react-bootstrap/Accordion';
-import returnI from '../../assets/return.png';
 
-export default function Github(props) {
+export default function Github() {
 
-    const [userName, setuSerName] = useState('');
+    const [userName, setUserName] = useState('');
     const [avatar, setAvatar] = useState('');
     const [error, setError] = useState(null);
     const [listRepos, setListRepos] = useState([]);
-    const { returnHome } = props;
 
     useEffect(() => {
         fetch(`https://api.github.com/search/users?q=${localStorage.email}`)
             .then(res => res.json())
             .then(data => {
-                if (data.message) {
-                    setError(data.message);
+                if (data.total_count == 0) {
+                    setError("Don't exist a GitHub account with this email");
                 } else {
                     setData(data.items[0]);
                     setError(null);
@@ -35,7 +33,7 @@ export default function Github(props) {
     }, []);
 
     const setData = ({ login, avatar_url }) => {
-        setuSerName(login);
+        setUserName(login);
         setAvatar(avatar_url);
     };
 
@@ -71,10 +69,10 @@ export default function Github(props) {
     
     return (
         <div>
-            <div className="navbar">Github Search
-                <p onClick={returnHome}> <img src={returnI} />Volver</p>
-            </div>
-            {/* <div>
+            {/*
+                Funcion que agrega un input de busqueda
+            */
+            /* <div>
                 <Container>
                     <Row>
                         <Col lg={12} md={12} sm={12} xs={12}>
@@ -103,7 +101,7 @@ export default function Github(props) {
                                     <Card>
                                         <Card.Img variant="top" src={avatar} />
                                         <Card.Header>
-                                            <Card.Title>{userName}</Card.Title>
+                                            <Card.Title>User: {userName}</Card.Title>
                                         </Card.Header>
                                         
                                         <Card.Header>

@@ -1,9 +1,11 @@
 .card-in {
     position: relative;
     left: 50%;
-    top: 100%;
+    top: 65%;
     transform: translate(-50%, -50%);
     padding: 5%;
+    box-shadow: 0 0 15px #c7c4c4;
+
     .logo {
         margin: 0 auto 20px;
         display: block;
